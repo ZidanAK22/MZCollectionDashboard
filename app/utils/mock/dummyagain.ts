@@ -38,14 +38,20 @@ interface SalesByType {
   sales: number;
 }
 
+interface PieSplit {
+  labels: string[],
+  datasets: number[],
+}
+
 export interface AnalyticsType {
   globalsales: TimeSeriesChart;
   salesbytype: PieChart;
   monthlyTrends: MonthlyTrend[];
   platformDistribution: PieChart;
+  feedbackDistribution: PieChart;
 }
 
-const mockDb = {
+export const mockDb = {
   monthlyTrends: [
     { month: "January", terms: [{ term: "Shoes", searches: 1500 }, { term: "Jackets", searches: 1200 }, { term: "T-Shirts", searches: 1000 }] },
     { month: "February", terms: [{ term: "Jeans", searches: 1800 }, { term: "Shoes", searches: 1600 }, { term: "T-Shirts", searches: 1400 }] },
@@ -141,5 +147,16 @@ export const getAnalytics: LoaderFunction = async (): Promise<AnalyticsType> => 
     ],
   };
 
-  return { globalsales, salesbytype, monthlyTrends, platformDistribution };
+  const feedbackDistribution: PieChart = {
+    labels: ["Likes", "Dislikes"],
+    datasets: [
+      {
+        data: [mockDb.feedbackData.likes, mockDb.feedbackData.dislikes],
+        backgroundColor: ["#4CAF50", "#F44336"], // Green for likes, Red for dislikes
+      },
+    ],
+  };
+  
+
+  return { globalsales, salesbytype, monthlyTrends, platformDistribution, feedbackDistribution };
 };

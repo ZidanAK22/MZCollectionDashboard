@@ -9,7 +9,7 @@ ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, ArcEleme
 export const loader = getAnalytics;
 
 export default function Dashboard() {
-    const { globalsales, salesbytype, monthlyTrends, platformDistribution } = useLoaderData<typeof loader>();
+    const { globalsales, salesbytype, monthlyTrends, platformDistribution, feedbackDistribution } = useLoaderData<typeof loader>();
 
     return (
         <div className="flex flex-col h-screen items-center my-4">
@@ -98,8 +98,15 @@ export default function Dashboard() {
                     <Doughnut
                     data={
                         salesbytype
-                    }
-                    
+                    }                    
+                    />
+                </div>
+
+                <div className="bg-white rounded-md col-span-3 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4">
+                    <Doughnut
+                    data={
+                        feedbackDistribution
+                    }                    
                     />
                 </div>
             </main>
