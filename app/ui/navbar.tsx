@@ -7,10 +7,8 @@ export default function CustomNavbar() {
                 
                 <p className="font-bold">SalesMon</p>
             </div>
-            <nav className="space-x-4">
-                <Link to="/about">Sales Data</Link>
-                <Link to="/about">Market Analytics</Link>
-                <Link to="/about">About</Link>
+            <nav className="space-x-4">                
+                <Link to="/dummy">Market Analytics</Link>                
             </nav>
         </div>
     )
