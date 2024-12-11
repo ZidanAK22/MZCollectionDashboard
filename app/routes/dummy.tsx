@@ -42,7 +42,7 @@ export default function Dashboard() {
     const selectedMonthData = monthlyTrends.find((entry) => entry.month === selectedMonth);
 
     return (
-        <div className="flex flex-col h-full items-center mt-4 mb-12 w-full">
+        <div className="flex flex-col h-full items-center mt-4 py-8 w-full">
             <h1 className="text-4xl font-bold text-center">
                 E-Commerce Business{" "}
                 <span className="italic bg-gradient-to-br from-primary to-secondary text-transparent bg-clip-text">
