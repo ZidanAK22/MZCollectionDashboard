@@ -1,4 +1,21 @@
 import type { MetaFunction } from "@remix-run/node";
+import { useEffect, useRef } from "react";
+import { Card, CardContent } from "~/components/ui/card";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "~/components/ui/carousel";
+
+// Array berisi jalur atau URL gambar yang ingin ditampilkan
+const images = [
+    "/baju1.jpeg",
+    "/baju2.jpeg",
+    "/baju3.jpeg",
+    "/baju4.jpeg",
+    "/baju5.jpeg",
+    "/baju6.jpeg",
+    "/baju7.jpeg",
+    "/baju8.jpeg",
+    "/baju9.jpeg",
+    "/baju10.jpeg",
+];
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,34 +25,56 @@ export const meta: MetaFunction = () => {
 };
 
 export default function HomePage() {
+  const nextButtonRef = useRef<HTMLButtonElement | null>(null); // Referensi untuk tombol "Next"
 
+  useEffect(() => {
+      // Fungsi untuk menggerakkan carousel
+      const interval = setInterval(() => {
+          if (nextButtonRef.current) {
+              nextButtonRef.current.click(); // Klik tombol "Next" secara otomatis
+          }
+      }, 2000); // 2000ms = 2 detik
+
+      // Membersihkan interval saat komponen unmount
+      return () => clearInterval(interval);
+  }, []);
   return (
-    <div className="flex flex-col h-full w-full content-center items-center my-4 ">
-      <main className="my-8 w-full space-y-8">
-        <div className="text-center space-y-8">
-          <h1 className="text-8xl font-bold"> SalesMon </h1>
-          <p className="text-gray-100"> Your Plug n' Play Solution for E-Commerce Analytics </p>
-          <div className="relative w-3/4 mx-auto -z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent"></div>
-            <img src="/salesmon.png" className="relative w-full" />
-          </div>
-        </div>
-        <div className="p-8 space-y-8">
-          <h2 className="text-3xl">
-            Integrate all your E-Commerce Data to <span className="italic text-4xl font-bold">ONE APP</span>
-          </h2>
-          <div className="flex flex-row">
-            <img src="Tokopedia_Mascot.png" width={96} />
-            <img src={'https://cdn.brandfetch.io/idgVhUUiaD/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B'} width={256} />
-          </div>
-          <p>
-            All the E-Commerce you run, analyzed here. instantly.
-          </p>
-        </div>
-        <div>
+      <main
+          className="w-full h-screen gap-12 pt-12 pr-60"
+          style={{
+              backgroundImage: `url('background_produk.jpg')`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+          }}
+      >
 
-        </div>
+          <Carousel
+              opts={{
+                  align: "start",
+              }}
+              className="w-full max-w-lg absolute right-[26.25rem] bottom-[12.5rem]"
+          >
+              <CarouselContent>
+                  {images.map((image, index) => (
+                      <CarouselItem key={index} className="basis-full" >
+                          <div className="p-1 ">
+                              <Card style={{ borderRadius: "50px", backgroundColor: "white" }}>
+                                  <CardContent className="flex items-center justify-center p-2 h-[50rem]">
+                                      <img
+                                          src={image}
+                                          alt={`Image ${index + 1}`}
+                                          style={{ borderRadius: "40px", height: "49rem" }}
+                                          className="w-full h-full object-cover"
+                                      />
+                                  </CardContent>
+                              </Card>
+                          </div>
+                      </CarouselItem>
+                  ))}
+              </CarouselContent>
+              <CarouselPrevious />
+              <CarouselNext ref={nextButtonRef} />
+          </Carousel>
       </main>
-    </div>
   );
 }

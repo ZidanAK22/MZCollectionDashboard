@@ -18,7 +18,7 @@ export default {
 				]
 			},
 			colors: {
-				text: '#0b1313',
+				text: '#fffaf9',
 				background: 'hsl(var(--background))',
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
@@ -59,7 +59,14 @@ export default {
 					'3': 'hsl(var(--chart-3))',
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))'
-				}
+				},
+				coklat: {
+					'1': 'var(--template-1)',
+					'2': 'var(--template-2)',
+					'3': 'var(--template-3)',
+					'4': 'var(--template-4)',
+					'5': 'var(--template-5)',
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

@@ -16,6 +16,7 @@
     "@remix-run/react": "^2.15.0",
     "@remix-run/serve": "^2.15.0",
     "chart.js": "^4.4.6",
+    "chartjs-plugin-datalabels": "^2.2.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel-react": "^8.5.1",

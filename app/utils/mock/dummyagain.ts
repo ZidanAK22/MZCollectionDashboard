@@ -108,7 +108,7 @@ export const getAnalytics: LoaderFunction = async (): Promise<AnalyticsType> => 
         label: "Monthly Sales",
         data: mockDb.rawMonthlySales.map((entry) => entry.sales),
         fill: false,
-        borderColor: "#4CAF50",
+        borderColor: "#a2d2ff",
         tension: 0.4,
       },
     ],
@@ -119,9 +119,7 @@ export const getAnalytics: LoaderFunction = async (): Promise<AnalyticsType> => 
     datasets: [
       {
         data: mockDb.salesByType.map((entry) => entry.sales),
-        backgroundColor: mockDb.salesByType.map(
-          () => `#${Math.floor(Math.random() * 16777215).toString(16)}`
-        ),
+        backgroundColor: ['#ABDEE6', '#CBAACB', '#FFFFB5', '#FFCCB6', '#F4B0C3', '#97C1A9'],
       },
     ],
   };
@@ -140,9 +138,7 @@ export const getAnalytics: LoaderFunction = async (): Promise<AnalyticsType> => 
     datasets: [
       {
         data: mockDb.salesByType.map((entry) => entry.sales),
-        backgroundColor: mockDb.salesByType.map(
-          () => `#${Math.floor(Math.random() * 16777215).toString(16)}`
-        ),
+        backgroundColor: ['#ABDEE6', '#CBAACB', '#FFFFB5', '#FFCCB6', '#F4B0C3', '#97C1A9']
       },
     ],
   };
@@ -152,7 +148,7 @@ export const getAnalytics: LoaderFunction = async (): Promise<AnalyticsType> => 
     datasets: [
       {
         data: [mockDb.feedbackData.likes, mockDb.feedbackData.dislikes],
-        backgroundColor: ["#4CAF50", "#F44336"], // Green for likes, Red for dislikes
+        backgroundColor: ["#A8E6CF", "#FF8F8F"], // Green for likes, Red for dislikes
       },
     ],
   };

@@ -34,7 +34,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body className="bg-gradient-to-b from-white to-stone-600">
+      <body className="bg-gradient-to-b from-coklat-3 to-coklat-4">
         <CustomNavbar />
         {children}
         <ScrollRestoration />

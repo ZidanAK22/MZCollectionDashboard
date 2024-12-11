@@ -4,7 +4,7 @@
 
 html,
 body {
-  @apply bg-background dark:bg-dark-bg;
+  @apply bg-background;
 
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -38,6 +38,10 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --template-1: #e7decd;
+    --template-2: #bd9979;
+    --template-3: #a07759;
+    --template-4: #65412b;
   }
   .dark {
     --background: 0 0% 3.9%;

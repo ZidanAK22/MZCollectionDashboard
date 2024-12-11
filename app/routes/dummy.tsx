@@ -3,6 +3,7 @@ import { Line, Pie, Bar, Doughnut } from "react-chartjs-2";
 import { useState } from "react";
 import { getAnalytics, mockDb } from "~/utils/mock/dummyagain";
 import type { MetaFunction } from "@remix-run/node";
+
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -28,6 +29,12 @@ ChartJS.register(
     BarElement
 );
 
+ChartJS.defaults.color = "#000000";
+ChartJS.defaults.font.size = 18;
+
+import ChartDataLabels from "chartjs-plugin-datalabels";
+
+
 export const loader = getAnalytics;
 
 export default function Dashboard() {
@@ -42,17 +49,17 @@ export default function Dashboard() {
     const selectedMonthData = monthlyTrends.find((entry) => entry.month === selectedMonth);
 
     return (
-        <div className="flex flex-col h-full items-center mt-4 py-8 w-full">
+        <div className="flex flex-col h-full text-text items-center mt-4 py-8 w-full">
             <h1 className="text-4xl font-bold text-center">
                 E-Commerce Business{" "}
-                <span className="italic bg-gradient-to-br from-primary to-secondary text-transparent bg-clip-text">
+                <span className="italic bg-gradient-to-br from-coklat-1 to-coklat-2 text-transparent bg-clip-text">
                     Analytics
                 </span>{" "}
                 Dashboard
             </h1>
 
             <div className={`flex relative w-full`}>
-                <main className={`flex-grow bg-secondary dark:bg-transparent border rounded-lg mx-4 lg:mx-24 xl:mx-48 mt-4 p-8 space-y-8 transition-transform duration-300 ${isAsideVisible ? "transform translate-x-[-8rem]" : "transform translate-x-0"}`}>
+                <main className={`flex-grow bg-gradient-to-tr from-coklat-1 to-white  border rounded-lg mx-4 lg:mx-24 xl:mx-48 mt-4 p-8 space-y-8 transition-transform duration-300 ${isAsideVisible ? "transform translate-x-[-8rem]" : "transform translate-x-0"}`}>
                     <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
                         <div className="bg-white rounded-md col-span-2 lg:col-span-3 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4">
                             <Line
@@ -60,36 +67,19 @@ export default function Dashboard() {
                                 options={{
                                     responsive: true,
                                     plugins: {
-                                        legend: { position: "top" },
-                                        title: { display: true, text: "Global Sales Over Time" },
+                                        legend: { position: "top", labels: { font: { weight: 'bolder' } } },
+                                        title: { display: true, text: "Global Sales Over Time", font: { weight: 'bold' } },
                                     },
                                 }}
                             />
                         </div>
-                        <div className="bg-white rounded-md col-span-1 lg:col-span-2 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4">
-                            <Pie
-                                data={salesbytype}
-                                options={{
-                                    responsive: true,
-                                    plugins: {
-                                        legend: { position: "top" },
-                                        title: { display: true, text: "Platform Distribution" },
-                                    },
-                                }}                        
-                            />
-                        </div>
-                    </div>
 
-                    <hr />
-
-                    <div className="grid grid-cols-2 gap-4">
                         {/* Monthly Trends Selector and Chart */}
-
-                        <div className="bg-white rounded-md col-span-1 p-4">
+                        <div className="bg-white rounded-md col-span-1 lg:col-span-2 p-4">
                             <h2 className="text-2xl font-bold text-black text-center mb-4">Monthly Trends</h2>
                             <div className="flex justify-center mb-4">
                                 <select
-                                    className="border rounded-md p-2"
+                                    className="border rounded-md p-2 bg-background text-black"
                                     value={selectedMonth}
                                     onChange={(e) => setSelectedMonth(e.target.value)}
                                 >
@@ -128,7 +118,11 @@ export default function Dashboard() {
                                 />
                             )}
                         </div>
+                    </div>
 
+                    <hr />
+
+                    <div className="grid grid-cols-2 gap-4">
                         {/* Platform Distribution Horizontal Bar Chart */}
                         <div className="bg-white rounded-md col-span-1 min-h-fit min-w-fit max-w-full flex justify-center py-4">
                             <Bar
@@ -147,9 +141,32 @@ export default function Dashboard() {
                                     indexAxis: "y", // Horizontal bar chart
                                     plugins: {
                                         legend: { position: "top" },
-                                        title: { display: true, text: "Sales by Type (Platform Distribution)" },
+                                        title: { display: true, text: "Sales by Clothing Type" },
                                     },
-                                }}                                
+                                }}
+                            />
+                        </div>
+                        <div className="bg-white rounded-md col-span-1 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4">
+                            <Pie
+                                data={salesbytype}
+                                options={{
+                                    responsive: true,
+                                    plugins: {
+                                        legend: { position: "top" },
+                                        title: { display: true, text: "Sales Distribution" },
+                                        datalabels: {
+                                            color: "#000000",
+                                            formatter: function(value, context) {
+                                                const total = context.chart.getDatasetMeta(1).data.reduce(
+                                                    (acc, val) => acc + val,
+                                                    0
+                                                );
+                                                const percentage = ((value / total) * 100).toFixed(2);
+                                                return `${percentage}%`;
+                                            }
+                                        }
+                                    },
+                                }}
                             />
                         </div>
                     </div>
