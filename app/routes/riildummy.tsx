@@ -1,6 +1,6 @@
 import { useLoaderData } from "@remix-run/react";
 import { Line, Pie, Bar, Doughnut } from "react-chartjs-2";
-import { getAnalytics } from "~/utils/mock/dummyagain";
+import { getAnalytics, mockDb } from "~/utils/mock/dummyagain";
 import type { MetaFunction } from "@remix-run/node";
 import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, ArcElement, BarElement } from "chart.js";
 
