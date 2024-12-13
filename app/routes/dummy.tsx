@@ -50,7 +50,7 @@ export default function Dashboard() {
 
     return (
         <div className="flex flex-col h-full text-text items-center mt-4 py-8 w-full">
-            <h1 className="text-4xl font-bold text-center">
+            <h1 className="text-[60px] font-bold text-center">
                 E-Commerce Business{" "}
                 <span className="italic bg-gradient-to-br from-coklat-1 to-coklat-2 text-transparent bg-clip-text">
                     Analytics
@@ -60,8 +60,12 @@ export default function Dashboard() {
 
             <div className={`flex relative w-full`}>
                 <main className={`flex-grow bg-gradient-to-tr from-coklat-1 to-white  border rounded-lg mx-4 lg:mx-24 xl:mx-48 mt-4 p-8 space-y-8 transition-transform duration-300 ${isAsideVisible ? "transform translate-x-[-8rem]" : "transform translate-x-0"}`}>
-                    <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
-                        <div className="bg-white rounded-md col-span-2 lg:col-span-3 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4">
+                    <div className="grid grid-cols-3 lg:grid-cols-5 gap-14">
+                        <div className="bg-white rounded-md col-span-2 lg:col-span-3 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4"
+                        style={{
+                            boxShadow: "0 2px 15px 2px rgba(0, 0, 0, 0.5)", // Spread radius 30px, opacity tinggi
+                        }}
+                        >
                             <Line
                                 data={globalsales}
                                 options={{
@@ -75,7 +79,11 @@ export default function Dashboard() {
                         </div>
 
                         {/* Monthly Trends Selector and Chart */}
-                        <div className="bg-white rounded-md col-span-1 lg:col-span-2 p-4">
+                        <div className="bg-white rounded-md col-span-1 lg:col-span-2 p-4"
+                        style={{
+                            boxShadow: "0 2px 15px 2px rgba(0, 0, 0, 0.5)", // Spread radius 30px, opacity tinggi
+                        }}
+                        >
                             <h2 className="text-2xl font-bold text-black text-center mb-4">Monthly Trends</h2>
                             <div className="flex justify-center mb-4">
                                 <select
@@ -122,9 +130,13 @@ export default function Dashboard() {
 
                     <hr />
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-20">
                         {/* Platform Distribution Horizontal Bar Chart */}
-                        <div className="bg-white rounded-md col-span-1 min-h-fit min-w-fit max-w-full flex justify-center py-4">
+                        <div className="bg-white rounded-md col-span-1 min-h-fit min-w-fit max-w-full flex justify-center py-4"
+                        style={{
+                            boxShadow: "0 2px 15px 2px rgba(0, 0, 0, 0.5)", // Spread radius 30px, opacity tinggi
+                        }}
+                        >
                             <Bar
                                 data={{
                                     labels: platformDistribution.labels,
@@ -146,7 +158,11 @@ export default function Dashboard() {
                                 }}
                             />
                         </div>
-                        <div className="bg-white rounded-md col-span-1 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4">
+                        <div className="bg-white rounded-md col-span-1 max-h-[50vh] min-h-fit min-w-fit flex justify-center py-4"
+                        style={{
+                            boxShadow: "0 2px 15px 2px rgba(0, 0, 0, 0.5)", // Spread radius 30px, opacity tinggi
+                        }}
+                        >
                             <Pie
                                 data={salesbytype}
                                 options={{
@@ -173,7 +189,11 @@ export default function Dashboard() {
 
                     <hr />
 
-                    <div className="grid grid-cols-2 gap-4 bg-white rounded-md">
+                    <div className="grid grid-cols-2 gap-4 bg-white rounded-md"
+                    style={{
+                        boxShadow: "0 2px 15px 2px rgba(0, 0, 0, 0.5)", // Spread radius 30px, opacity tinggi
+                    }}
+                    >
 
                         <div className=" col-span-1 min-h-fit min-w-fit flex justify-center py-4">
                             <Doughnut
