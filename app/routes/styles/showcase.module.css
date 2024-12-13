@@ -1,0 +1,9 @@
+.h1 {
+    font-weight: 700;
+    font-size: 1.875rem; /* 30px  3xl in tailwind*/
+    line-height: 2.25rem; /* 36px */
+}
+
+.p {
+    letter-spacing: 0.05em; /* tracking-wider in tailwind */
+}
