@@ -32,9 +32,6 @@ ChartJS.register(
 ChartJS.defaults.color = "#000000";
 ChartJS.defaults.font.size = 18;
 
-import ChartDataLabels from "chartjs-plugin-datalabels";
-
-
 export const loader = getAnalytics;
 
 export default function Dashboard() {

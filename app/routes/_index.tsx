@@ -1,8 +1,22 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "~/components/ui/card";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "~/components/ui/carousel";
+import { MetaFunction } from "@remix-run/node";
 
-// Array berisi jalur atau URL gambar yang ingin ditampilkan beserta harga
+export const meta: MetaFunction = () => {
+  return [
+    { title: "MZCollection" },
+    {
+      property: "og:title",
+      content: "Showcase",
+    },
+    {
+      name: "description",
+      content: "Product showcase",
+    },
+  ];
+};
+
 const images = [
     { src: "/baju1.jpeg", price: "Rp 84.000" },
     { src: "/baju2.jpeg", price: "Rp 84.000" },
@@ -17,28 +31,39 @@ const images = [
 ];
 
 export default function ProductPage() {
-    const nextButtonRef = useRef<HTMLButtonElement | null>(null); // Referensi untuk tombol "Next"
+    const nextButtonRef = useRef<HTMLButtonElement | null>(null); // Reference for "Next" button
+    const previousButtonRef = useRef<HTMLButtonElement | null>(null); // Reference for "Previous" button
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isForward, setIsForward] = useState(true); // Track the direction of the carousel
 
     useEffect(() => {
-        // Fungsi untuk menggerakkan carousel
-        const interval = setInterval(() => {
-            if (nextButtonRef.current) {
-                nextButtonRef.current.click(); // Klik tombol "Next" secara otomatis
-            }
-        }, 2000); // 2000ms = 2 detik
+        const totalItems = images.length;
 
-        // Membersihkan interval saat komponen unmount
+        const interval = setInterval(() => {
+            if (isForward) {
+                if (currentIndex < totalItems - 1) {
+                    setCurrentIndex((prevIndex) => prevIndex + 1);
+                    nextButtonRef.current?.click(); // Move to the next item
+                } else {
+                    setIsForward(false); // Switch to backward direction at the end
+                }
+            } else {
+                if (currentIndex > 0) {
+                    setCurrentIndex((prevIndex) => prevIndex - 1);
+                    previousButtonRef.current?.click(); // Move to the previous item
+                } else {
+                    setIsForward(true); // Switch to forward direction at the start
+                }
+            }
+        }, 2000); // 2 seconds per slide
+
+        // Clean up on component unmount
         return () => clearInterval(interval);
-    }, []);
+    }, [currentIndex, isForward]);
 
     return (
         <main
-            className="w-full h-screen gap-12 pt-12 pr-60"
-            style={{
-                backgroundImage: `url('background.jpg')`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
+            className="w-full h-screen gap-12 pt-12 pr-60 bg-produk bg-cover bg-center"            
         >
             <Carousel
                 opts={{
@@ -48,7 +73,7 @@ export default function ProductPage() {
             >
                 <CarouselContent>
                     {images.map((item, index) => (
-                        <CarouselItem key={index} className="basis-full"                        >
+                        <CarouselItem key={index} className="basis-full">
                             <div className="p-1">
                                 <Card style={{ borderRadius: "50px", backgroundColor: "white" }}>
                                     <CardContent className="flex flex-col items-center justify-center p-2 h-[45rem]">
@@ -65,7 +90,7 @@ export default function ProductPage() {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious />
+                <CarouselPrevious ref={previousButtonRef} />
                 <CarouselNext ref={nextButtonRef} />
             </Carousel>
         </main>

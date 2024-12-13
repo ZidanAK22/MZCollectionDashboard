@@ -1,0 +1,9 @@
+.hoverEffect {
+    color: inherit;
+    transition: transform 200ms, color 200ms;
+}
+
+.hoverEffect:hover {
+    color: var(--template-4); /* Tailwind's blue-500 */
+    transform: scale(1.1);
+}
