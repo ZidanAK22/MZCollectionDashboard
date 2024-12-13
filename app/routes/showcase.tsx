@@ -1,4 +1,19 @@
 import styles from '../styles/showcase.module.css';
+import { MetaFunction } from '@remix-run/node';
+
+export const meta: MetaFunction = () => {
+    return [
+      { title: "MZCollection | SalesMon" },
+      {
+        property: "og:title",
+        content: "Showcase",
+      },
+      {
+        name: "description",
+        content: "Product & App Showcase/Hero",
+      },
+    ];
+  };
 
 export default function () {
     return (

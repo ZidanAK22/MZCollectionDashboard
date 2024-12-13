@@ -4,6 +4,20 @@ import { useState } from "react";
 import { getAnalytics, mockDb } from "~/utils/mock/dummyagain";
 import type { MetaFunction } from "@remix-run/node";
 
+export const meta: MetaFunction = () => {
+    return [
+      { title: "Sales Monitoring" },
+      {
+        property: "og:title",
+        content: "Monitoring",
+      },
+      {
+        name: "description",
+        content: "E-Commerce Sales Monitoring Dashboard",
+      },
+    ];
+  };
+
 import {
     Chart as ChartJS,
     CategoryScale,

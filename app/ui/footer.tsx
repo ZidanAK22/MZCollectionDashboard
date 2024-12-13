@@ -2,7 +2,7 @@ export default function CustomFooter() {
     return (
         <main>
             <hr />
-            <div className="grid grid-cols-3 grid mt-4">
+            <div className="grid grid-cols-3 mt-4">
                 <div className="col-span-1">
                     KONTAKTS
                 </div>
