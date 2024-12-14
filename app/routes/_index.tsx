@@ -4,30 +4,30 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { MetaFunction } from "@remix-run/node";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "MZCollection" },
-    {
-      property: "og:title",
-      content: "Showcase",
-    },
-    {
-      name: "description",
-      content: "Product showcase",
-    },
-  ];
+    return [
+        { title: "MZCollection" },
+        {
+            property: "og:title",
+            content: "Showcase",
+        },
+        {
+            name: "description",
+            content: "Product showcase",
+        },
+    ];
 };
 
 const images = [
-    { src: "/baju1.jpeg", price: "Rp 84.000" },
-    { src: "/baju2.jpeg", price: "Rp 84.000" },
-    { src: "/baju3.jpeg", price: "Rp 32.000" },
-    { src: "/baju4.jpeg", price: "Rp 32.000" },
-    { src: "/baju5.jpeg", price: "Rp 84.000" },
-    { src: "/baju6.jpeg", price: "Rp 84.000" },
-    { src: "/baju7.jpeg", price: "Rp 32.000" },
-    { src: "/baju8.jpeg", price: "Rp 84.000" },
-    { src: "/baju9.jpeg", price: "Rp 32.000" },
-    { src: "/baju10.jpeg", price: "Rp 84.000" },
+    { src: "/baju1.jpeg", price: "Rp 95.000" },
+    { src: "/baju2.jpeg", price: "Rp 95.000" },
+    { src: "/baju3.jpeg", price: "Rp 50.000" },
+    { src: "/baju4.jpeg", price: "Rp 50.000" },
+    { src: "/baju5.jpeg", price: "Rp 95.000" },
+    { src: "/baju6.jpeg", price: "Rp 95.000" },
+    { src: "/baju7.jpeg", price: "Rp 50.000" },
+    { src: "/baju8.jpeg", price: "Rp 95.000" },
+    { src: "/baju9.jpeg", price: "Rp 50.000" },
+    { src: "/baju10.jpeg", price: "Rp 95.000" },
 ];
 
 export default function ProductPage() {
@@ -63,7 +63,7 @@ export default function ProductPage() {
 
     return (
         <main
-            className="w-full h-screen gap-12 pt-12 pr-60 bg-produk bg-cover bg-center"            
+            className="w-full h-screen gap-12 pt-12 pr-60 bg-produk bg-cover bg-center"
         >
             <Carousel
                 opts={{

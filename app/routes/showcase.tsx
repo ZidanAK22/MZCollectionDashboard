@@ -20,7 +20,7 @@ export default function () {
         <main className="text-text flex flex-col h-screen py-12 space-y-24">
             <div className="flex flex-row p-8">
                 <div className="flex flex-col space-y-4">
-                    <h1 className={styles.h1}>What is MZCollection</h1>
+                    <h1 className={styles.h1}>What is MZCollection?</h1>
                     <p className={styles.p}>MZCollection is a muslimah-wear brand, of a clothes convection.</p>
                 </div>
             </div>

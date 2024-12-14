@@ -74,7 +74,7 @@ export default {
 				sm: 'calc(var(--radius) - 4px)'
 			},
 			backgroundImage: {
-				'produk' : "url('/background_produk.jpg')"
+				'produk' : "url('/background.jpg')"
 			},
 		}
 	},
