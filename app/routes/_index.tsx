@@ -69,19 +69,19 @@ export default function ProductPage() {
                 opts={{
                     align: "start",
                 }}
-                className="w-full max-w-lg absolute right-[24.25rem] bottom-[6.5rem]"
+                className="w-full max-w-lg md:max-w-md absolute md:right-[17.5rem] right-[24.25rem] bottom-[6.5rem]"
             >
                 <CarouselContent>
                     {images.map((item, index) => (
                         <CarouselItem key={index} className="basis-full">
                             <div className="p-1">
-                                <Card style={{ borderRadius: "50px", backgroundColor: "white" }}>
-                                    <CardContent className="flex flex-col items-center justify-center p-2 h-[45rem]">
+                                <Card className="rounded-[50px] bg-white">
+                                    <CardContent className="flex flex-col items-center justify-center p-2 h-[45rem] md:h-[38rem]">
                                         <img
                                             src={item.src}
                                             alt={`Image ${index + 1}`}
-                                            style={{ borderRadius: "40px", height: "39rem" }}
-                                            className="w-full h-full object-cover"
+                                            // style={{ borderRadius: "40px", height: "35rem" }}
+                                            className="w-full h-full object-cover rounded-[40px] md:h-30rem"
                                         />
                                         <p className="text-[40px] font-semibold text-center mt-4">{item.price}</p>
                                     </CardContent>
