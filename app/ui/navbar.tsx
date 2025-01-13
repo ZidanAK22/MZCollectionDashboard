@@ -11,7 +11,7 @@ export default function CustomNavbar() {
             </div>
             <nav className="text-3xl space-x-8">
                 <Link
-                    to="/dummy"
+                    to="/analytics"
                     className={styles.hoverEffect}
                 >
                     Sales Analytics
