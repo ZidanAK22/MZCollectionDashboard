@@ -125,11 +125,11 @@ export default function Dashboard() {
                                         responsive: true,
                                         plugins: {
                                             legend: { position: "top" },
-                                            title: { display: true, text: `Top Searched Terms in ${selectedMonth}` },
+                                            title: { display: true, text: `Top Sold in ${selectedMonth}` },
                                         },
                                         scales: {
                                             y: {
-                                                max: 5000
+                                                max: 200
                                             }
                                         }
                                     }}
@@ -238,7 +238,7 @@ export default function Dashboard() {
                     </button>
                     <div className="p-4 text-black">
                         <p className="bg-white dark:bg-secondary text-sm text-wrap text-black dark:text-white p-2 rounded-lg">
-                            Sales trends show steady growth, with T-shirts and jeans leading platform distribution. Top-searched items include shoes, jackets, and T-shirts, indicating focus areas for promotions. Opportunities exist to boost visibility for dresses and accessories. Let me know if you’d like targeted recommendations!
+                        The sales performance indicates a decline, possibly due to more active competitors. We recommend reviewing your competitive strategy, such as conducting market price analysis, launching new promotional campaigns, or enhancing brand visibility on digital platforms.
                         </p>
                     </div>
                 </aside>

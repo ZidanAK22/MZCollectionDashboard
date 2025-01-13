@@ -35,7 +35,7 @@ export interface AnalyticsType {
 const mockDb = {
     monthlyTrends: [
         { month: "January", searches: 1500 },
-        { month: "February", searches: 1800 },
+        
         { month: "March", searches: 2000 },
         { month: "April", searches: 2500 },
         { month: "May", searches: 2700 },
